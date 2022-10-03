@@ -4,7 +4,9 @@
   "description": "Week 14 Homework UofU Bootcamp",
   "main": "index.js",
   "scripts": {
+    "seed": "node seeds/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,20 @@
   },
   "homepage": "https://github.com/benbushman98/Tech-Blog#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "connect-session-sequelize": "^7.1.5",
-    "dotenv": "^16.0.2",
-    "express-handlebars": "^6.0.6",
-    "express-session": "^1.17.3",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.21.6",
-    "sqlite3": "^5.1.0"
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.5",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "@types/express-handlebars": "^6.0.0",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.1.2"
   }
 }

@@ -1,0 +1,13 @@
+<div class="m-5">
+
+    {{#each posts as |post|}}
+    <card class="m-3 h-25 d-inline-block">
+        <div class="row">
+            <div class="mx-5">{{title}}</div>
+            <div class="mx-5">Created on {{format_date date_created}} by {{username}}</div>
+        </div>
+        <div class="text-center d-flex">{{content}}</div>
+    </card>
+    {{/each}}
+
+</div>
