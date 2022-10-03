@@ -1,14 +1,20 @@
+//LOG-OUT THIS WORKS ✔️✔️
+
 const logout = async () => {
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  });
+    const response = await fetch('/api/users/logout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    
+    if (response.ok) {
 
-  if (response.ok) {
-    document.location.replace('/login');
-  } else {
-    alert('Failed to log out');
-  }
-};
+      $(document).ready(function () {
+        window.setTimeout(function () {
+            location.href = "/";
+        }, 1500);
+    });
+    }
+  };
 
-document.querySelector('#logout').addEventListener('click', logout);
+const logoutBtn = document.getElementById('logout');
+logoutBtn.addEventListener('click', logout);

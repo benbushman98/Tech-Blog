@@ -18,6 +18,12 @@ const post = [
         date_created: "5/1/2022",
         content: "I have really loved learning about ORMs. It's really simplified the way I create queries in SQL!",
         user_id: 1
+    },
+    {
+        title: "JavaScript, the OG coding language",
+        date_created: "10/1/2022",
+        content: "I believe JavaScript to be one of the best and most powerful coding languages out there. If you need power, look to JavaScript.",
+        user_id: 1
     }
 ]
 
