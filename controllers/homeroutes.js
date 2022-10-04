@@ -31,7 +31,7 @@ router.get('/dashboard', (req, res) => {
     res.redirect('login');
     return;
   }
-  res.render('dashboard')
+  res.render('dashboard', {loggedIn: req.session.loggedIn})
 });
 
 
