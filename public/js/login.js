@@ -18,8 +18,9 @@ const login = async (event) => {
 
     if (response.ok) {
       document.location.replace('dashboard');
+      console.log(response)
     } else {
-     alert("error: " + response.message)
+     alert("error:" + response.message)
     }
   }
 };

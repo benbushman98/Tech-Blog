@@ -11,7 +11,7 @@ const logout = async () => {
       $(document).ready(function () {
         window.setTimeout(function () {
             location.href = "/";
-        }, 1500);
+        }, 1000);
     });
     }
   };
