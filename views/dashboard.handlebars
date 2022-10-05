@@ -20,41 +20,26 @@
 </section>
 
 {{!-- CREATE A NEW SURVEY FORM --}}
-<section class="card mb-5 hide" id="surveyForm">
-    <div class="card-header bg-dark text-white">Create New Survey</div>
+<section class="card mb-5 hide" id="postForm">
+    <div class="card-header bg-dark text-white">Create New Post</div>
     <div class="card-body">
-        <form class="newSurveyForm">
+        <form class="newPostForm">
             <div>
-                <label for="surveyTitle" class="form-label">Title:</label>
-                <input class="form-input w-100 mb-2" id="surveyTitle" type="text" name="surveytitle"/>
+                <label class="form-label">Title:</label>
+                <input class="form-input w-100 mb-2" id="postTitle" type="text" name="surveytitle"/>
             </div>
             <div>
-                <label for="surveyQuestion" class="form-label">Question:</label>
-                <input class="form-input w-100 mb-2" id="surveyQuestion" type="text" name="question"/>
+                <label class="form-label">Content:</label>
+                <input class="form-input w-100 mb-2" id="postContent" type="text" name="post"/>
             </div>
-            <div>
-                <label for="surveyOption" class="form-label">Option 1:</label>
-                <input class="form-input w-100 mb-3" id="option1" type="text" name="option1"/>
-            </div>
-            <div>
-                <label for="surveyOption" class="form-label">Option 2:</label>
-                <input class="form-input w-100 mb-3" id="option2" type="text" name="option2"/>
-            </div>
-            <div>
-                <label for="surveyOption" class="form-label">Option 3:</label>
-                <input class="form-input w-100 mb-3" id="option3" type="text" name="option3"/>
-            </div>
-            <div>
-                <label for="surveyOption" class="form-label">Option 4:</label>
-                <input class="form-input w-100 mb-3" id="option4" type="text" name="option4"/>
-            </div>
-            <button type="submit" class="btn custom-btn" id="submitSurvey">Submit</button>
+        
+            <button type="submit" class="bg-secondary text-white" id="submitSurvey">Submit</button>
         </form>
     </div>
 </section>
 </div>
 <div class="text-center mt-3">
-    <button type="button" class="btn custom-loginbtn mx-auto title" style="width: 200px;" id="createBtn">+ Create Survey</button> 
+    <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">+ Create Post</button> 
 </div>
 
 <script src="./js/create.js"></script> 
