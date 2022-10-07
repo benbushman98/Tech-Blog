@@ -5,7 +5,7 @@ async function deleteHandler(event) {
 
     const id = event.target.dataset.id;
 
-    const response = await fetch(`/api/survey/${id}`, {
+    const response = await fetch(`/api/posts/${id}`, {
         method: 'DELETE'
     });
 

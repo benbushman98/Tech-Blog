@@ -26,13 +26,34 @@ router.get('/signup', (req, res) => {
   res.render('signup', {layout: 'main2'}) 
 });
 
-router.get('/dashboard', (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect('login');
-    return;
-  }
-  res.render('dashboard', {loggedIn: req.session.loggedIn})
-});
 
+// router.get('/post/:id', async (req, res) => {
+//   try{
+//     const postData = await Post.findOne(
+//       {
+//         where: {
+//           id: req.params.id,
+//         },
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['username'],
+//         },
+//       ],
+//     });
+
+//     if (!postData) {
+//       res.status(404).json({ message: 'Post ID not found' });
+//       return;
+//     }
+
+//     const posts =  postData.get({ plain:true });
+//     res.render('dashboard', { postData, date: posts.date_created, name: posts.user.username, loggedIn: req.session.loggedIn, layout: 'main2' } );
+
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// })
 
 module.exports = router;

@@ -1,46 +1,51 @@
 <div class="container">
-<section class="card mb-5">
-    <div class="card-header bg-dark h2 text-white">Your Posts</div>
-    <div>
-        <ul>
-            {{#if posts.length}} 
+    <section class="mb-5">
+        <div class="card-header bg-dark h2 text-white">Your Posts</div>
+        <div>
+            <ul class="p-1">
+                {{#if posts.length}}
                 {{#each posts as |post|}}
-                <li class="row my-2">
-                    <a class="a" href="/survey/{{id}}"> 
-                        <div class="m-2"><p class="stayBlack">{{format_date date_created}}: "{{title}}"</p></div>
-                    </a>
-                    <button class="btn custom-btn d-inline ml-auto m-1 deleteBtn" data-id="{{id}}">Delete</button>
-                </li>
+                <div class="border border-4 m-1">
+                    <li class="d-flex">
+                        <div class="m-2">
+                            <p class="stayBlack">{{format_date date_created}}: "{{title}}"</p>
+                        </div>
+                        </a>
+                        <button class="d-inline ml-auto m-1 ms-auto" data-id="{{id}}"><a class="a" href="/post/{{id}}">View
+                            Post</a></button>
+                        <button class="d-inline ml-auto m-1 deleteBtn" data-id="{{id}}">Delete</button>
+                    </li>
+                </div>
                 {{/each}}
-            {{else}}
-            <p class="font-italic mt-2">You have no surveys at this time.</p>
-            {{/if}}
-        </ul>
-    </div>
-</section>
+                {{else}}
+                <p class="font-italic mt-2">You have no surveys at this time.</p>
+                {{/if}}
+            </ul>
+        </div>
+    </section>
 
-{{!-- CREATE A NEW SURVEY FORM --}}
-<section class="card mb-5 hide" id="postForm">
-    <div class="card-header bg-dark text-white">Create New Post</div>
-    <div class="card-body">
-        <form class="newPostForm">
-            <div>
-                <label class="form-label">Title:</label>
-                <input class="form-input w-100 mb-2" id="postTitle" type="text" name="surveytitle"/>
-            </div>
-            <div>
-                <label class="form-label">Content:</label>
-                <input class="form-input w-100 mb-2" id="postContent" type="text" name="post"/>
-            </div>
-        
-            <button type="submit" class="bg-secondary text-white" id="submitSurvey">Submit</button>
-        </form>
-    </div>
-</section>
+    {{!-- CREATE A NEW SURVEY FORM --}}
+    <section class="card mb-5 hide" id="postForm">
+        <div class="card-header bg-dark text-white">Create New Post</div>
+        <div class="card-body">
+            <form class="newPostForm">
+                <div>
+                    <label class="form-label">Title:</label>
+                    <input class="form-input w-100 mb-2" id="postTitle" type="text" name="surveytitle" />
+                </div>
+                <div>
+                    <label class="form-label">Content:</label>
+                    <input class="form-input w-100 mb-2" id="postContent" type="text" name="post" />
+                </div>
+
+                <button type="submit" class="bg-secondary text-white" id="submitSurvey">Submit</button>
+            </form>
+        </div>
+    </section>
 </div>
 <div class="text-center mt-3">
-    <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">+ Create Post</button> 
+    <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">+ Create Post</button>
 </div>
 
-<script src="./js/create.js"></script> 
-<script src="./js/delete.js"></script> 
+<script src="./js/create.js"></script>
+<script src="./js/delete.js"></script>
