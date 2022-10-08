@@ -7,8 +7,8 @@
                 {{#each posts as |post|}}
                 <div class="border border-4 m-1">
                     <li class="d-flex">
-                        <div class="m-2">
-                            <p class="stayBlack">{{format_date date_created}}: "{{title}}"</p>
+                        <div class="p-2">
+                            <p>{{format_date date_created}}: "{{title}}"</p>
                         </div>
                         </a>
                         <button class="d-inline ml-auto m-1 ms-auto" data-id="{{id}}"><a class="a" href="/post/{{id}}">View
@@ -31,20 +31,20 @@
             <form class="newPostForm">
                 <div>
                     <label class="form-label">Title:</label>
-                    <input class="form-input w-100 mb-2" id="postTitle" type="text" name="surveytitle" />
+                    <input class="form-input w-100 mb-2" id="postTitle" type="text" name="title" />
                 </div>
                 <div>
                     <label class="form-label">Content:</label>
                     <input class="form-input w-100 mb-2" id="postContent" type="text" name="post" />
                 </div>
 
-                <button type="submit" class="bg-secondary text-white" id="submitSurvey">Submit</button>
+                <button type="submit" class="bg-secondary text-white" id="submitPost">Submit</button>
             </form>
         </div>
     </section>
 </div>
 <div class="text-center mt-3">
-    <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">+ Create Post</button>
+    <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">Post your Post</button>
 </div>
 
 <script src="./js/create.js"></script>

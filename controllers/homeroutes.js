@@ -3,7 +3,13 @@ const {Post, User} = require('../models');
 
 
 router.get('/', async (req, res) => {
-  const postData = await Post.findAll().catch((err) => { 
+  const postData = await Post.findAll({
+    include: [{
+      model: User,
+      attributes: ['username']
+    }
+  ]
+  }).catch((err) => { 
     res.json(err);
   });
   const posts = postData.map((post) => post.get({ plain: true }));
@@ -27,33 +33,34 @@ router.get('/signup', (req, res) => {
 });
 
 
-// router.get('/post/:id', async (req, res) => {
-//   try{
-//     const postData = await Post.findOne(
-//       {
-//         where: {
-//           id: req.params.id,
-//         },
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['username'],
-//         },
-//       ],
-//     });
+router.get('/post/:id', async (req, res) => {
+  try{
+   
+    const postData = await Post.findOne(
+      {
+        where: {
+          id: req.params.id,
+        },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+    console.log(postData)
+    if (!postData) {
+      res.status(404).json({ message: 'Post ID not found' });
+      return;
+    }
 
-//     if (!postData) {
-//       res.status(404).json({ message: 'Post ID not found' });
-//       return;
-//     }
+    const thePost =  postData.get({ plain:true });
+    res.render('post', {thePost, loggedIn: req.session.loggedIn } );
 
-//     const posts =  postData.get({ plain:true });
-//     res.render('dashboard', { postData, date: posts.date_created, name: posts.user.username, loggedIn: req.session.loggedIn, layout: 'main2' } );
-
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// })
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;

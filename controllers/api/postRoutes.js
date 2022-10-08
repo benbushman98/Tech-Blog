@@ -39,35 +39,5 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get('/posts/:id', async (req, res) => {
-  try{
-   
-    const postData = await Post.findOne(
-      {
-        where: {
-          id: req.params.id,
-        },
-      include: [
-        {
-          model: User,
-          // attributes: ['username'],
-        },
-      ],
-    });
-    console.log(postData)
-    if (!postData) {
-      res.status(404).json({ message: 'Post ID not found' });
-      return;
-    }
-
-    const survey =  postData.get({ plain:true });
-    console.log(survey.option1)
-    res.render('post', {loggedIn: req.session.loggedIn, layout: 'main2' } );
-
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-})
 
 module.exports = router;
