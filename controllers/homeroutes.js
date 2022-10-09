@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post, User} = require('../models');
+const { Post, User, Comment } = require('../models');
 
 
 router.get('/', async (req, res) => {
@@ -8,12 +8,12 @@ router.get('/', async (req, res) => {
       model: User,
       attributes: ['username']
     }
-  ]
-  }).catch((err) => { 
+    ]
+  }).catch((err) => {
     res.json(err);
   });
   const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+  res.render('homepage', { posts, loggedIn: req.session.loggedIn });
 });
 
 router.get('/login', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/login', (req, res) => {
     res.redirect('dashboard');
     return;
   }
-  res.render('login', {layout: 'main2'}) 
+  res.render('login', { layout: 'main2' })
 });
 
 router.get('/signup', (req, res) => {
@@ -29,37 +29,53 @@ router.get('/signup', (req, res) => {
     res.redirect('dashboard');
     return;
   }
-  res.render('signup', {layout: 'main2'}) 
+  res.render('signup', { layout: 'main2' })
 });
 
 
 router.get('/post/:id', async (req, res) => {
-  try{
-   
-    const postData = await Post.findOne(
-      {
-        where: {
-          id: req.params.id,
-        },
-      include: [
+  if (req.session.loggedIn) {
+    try {
+      const postData = await Post.findOne(
         {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
-    });
-    console.log(postData)
-    if (!postData) {
-      res.status(404).json({ message: 'Post ID not found' });
-      return;
+          where: {
+            id: req.params.id
+          },
+          attributes: [
+            'id',
+            'title',
+            'content',
+            'date_created'
+          ],
+          include: [
+            {
+              model: Comment,
+              attributes: ['id', 'comment', 'post_ID', 'user_ID', 'date_created'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            },
+            {
+              model: User,
+              attributes: ['username']
+            }
+          ]
+        })
+      if (!postData) {
+        res.status(404).json({ message: 'Post ID not found' });
+        return;
+      }
+
+      const thePost = postData.get({ plain: true });
+      res.render('post', { thePost, loggedIn: req.session.loggedIn });
+
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
     }
-
-    const thePost =  postData.get({ plain:true });
-    res.render('post', {thePost, loggedIn: req.session.loggedIn } );
-
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+  } else {
+    res.redirect('/login')
   }
 })
 

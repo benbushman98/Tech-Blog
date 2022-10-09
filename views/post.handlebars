@@ -1,10 +1,50 @@
 <div class="mx-5 p-5">
     <card class="m-3 h-25 d-inline-block w-100 border  border-4">
         <div class="d-flex bg-secondary text-white py-3 m-1">
-            <div class="mx-5 ">{{title}}</div>
+            <div class="mx-5 text-white ">{{title}}</div>
             <a class="a ms-auto text-white"></a>
             <div class="mx-5">Created on {{format_date date_created}} by {{user.username}}</div>
         </div>
         <div class="d-flex m-3">{{content}}</div>
     </card>
 </div>
+
+<div class="mx-5 p-5">
+    <card class="m-3 h-25 d-inline-block w-100 border border-4">
+        <div class="d-flex bg-secondary text-white py-3 m-1">
+            <div class="mx-5 text-white ">Comments</div>
+        </div>
+        {{#if posts.comments}}
+        {{#each posts.comments}}
+        <div class="mx-5">Commented on {{format_date date_created}} by {{user.username}}</div>
+
+        <div class="d-flex m-3">{{content}}</div>
+        {{/each}}
+        {{else}}
+        <div>
+            <p class="font-italic ml-3 mt-3">You have no comments at this time.</p>
+        </div>
+        {{/if}}
+    </card>
+</div>
+
+ <section class="card mb-5 hide" id="commentForm">
+        <div class="card-header bg-dark text-white">Create New Post</div>
+        <div class="card-body">
+            <form class="newCommentForm">
+                <div>
+                    <label class="form-label">Please Enter your Comment</label>
+                    <input class="form-input w-100 mb-2" id="commentComment" type="text" name="post" />
+                </div>
+
+                <button type="submit" class="bg-secondary text-white" id="submitComment">Submit</button>
+            </form>
+        </div>
+    </section>
+</div>
+<div class="text-center mt-3">
+    <button type="button" class="mx-auto title" style="width: 200px;" id="createComment">Post your Comment</button>
+</div>
+
+<script src="../js/createComment.js"></script>
+<script src="../js/delete.js"></script>
