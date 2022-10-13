@@ -1,9 +1,8 @@
 const router = require('express').Router();
 const { Post } = require('../../models/');
-const { User } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-// POST A NEW SURVEY - THIS WORKS ✔️✔️
+
 router.post('/', withAuth, async (req, res) => {
   try {
     console.log("testing");

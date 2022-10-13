@@ -30,6 +30,11 @@ const user = [
       username: "Natasha",
       email: "natty@gmail.com",
       password: "nattynuts"
+    },
+    {
+      username: "BAMBAM",
+      email: "bbushman@ahsmail.com",
+      password: "$2b$10$Csf.riSpdapa4z2IsaMBqeVRlDf1m4vFcd8gxI8Lnl2Dz9eW5IWxe"
     }
   ]
 

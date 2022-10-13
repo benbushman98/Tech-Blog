@@ -1,4 +1,4 @@
-//DELETE A SURVEY - THIS WORKS ✔️✔️
+
 
 async function deleteHandler(event) {
     event.preventDefault();

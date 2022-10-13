@@ -16,6 +16,8 @@ router.get('/', async (req, res) => {
   res.render('homepage', { posts, loggedIn: req.session.loggedIn });
 });
 
+
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('dashboard');
@@ -34,48 +36,45 @@ router.get('/signup', (req, res) => {
 
 
 router.get('/post/:id', async (req, res) => {
-  if (req.session.loggedIn) {
-    try {
-      const postData = await Post.findOne(
-        {
-          where: {
-            id: req.params.id
+  try {
+    const postData = await Post.findOne(
+      {
+        where: {
+          id: req.params.id
+        },
+        attributes: [
+          'id',
+          'title',
+          'content',
+          'date_created'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: [
+              'id',
+              'comment',
+              'post_id',
+              'user_id',
+              'date_created'
+            ],
           },
-          attributes: [
-            'id',
-            'title',
-            'content',
-            'date_created'
-          ],
-          include: [
-            {
-              model: Comment,
-              attributes: ['id', 'comment', 'post_ID', 'user_ID', 'date_created'],
-              include: {
-                model: User,
-                attributes: ['username']
-              }
-            },
-            {
-              model: User,
-              attributes: ['username']
-            }
-          ]
-        })
-      if (!postData) {
-        res.status(404).json({ message: 'Post ID not found' });
-        return;
-      }
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+    const thePost = postData.get({ plain: true });
+    res.render('post', {
+      thePost,
+      loggedIn: req.session.loggedIn
+    });
+    // console.log(thePost)
 
-      const thePost = postData.get({ plain: true });
-      res.render('post', { thePost, loggedIn: req.session.loggedIn });
-
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  } else {
-    res.redirect('/login')
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 })
 

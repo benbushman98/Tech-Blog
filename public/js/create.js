@@ -32,9 +32,3 @@ async function newPost(event) {
 
 document.querySelector('.newPostForm').addEventListener('submit', newPost);
 createPost.addEventListener('click', showPostCreation)
-
-
-
-
-
-// 
