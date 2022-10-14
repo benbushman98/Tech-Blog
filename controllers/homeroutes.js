@@ -35,6 +35,7 @@ router.get('/signup', (req, res) => {
 });
 
 
+// TA -- Taylor Hakes helped with this route.
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findOne(
@@ -49,28 +50,21 @@ router.get('/post/:id', async (req, res) => {
           'date_created'
         ],
         include: [
+          User,
           {
             model: Comment,
-            attributes: [
-              'id',
-              'comment',
-              'post_id',
-              'user_id',
-              'date_created'
-            ],
-          },
-          {
-            model: User,
-            attributes: ['username']
+            include: [User],
           }
+         
         ]
       })
+
     const thePost = postData.get({ plain: true });
     res.render('post', {
       thePost,
       loggedIn: req.session.loggedIn
     });
-    // console.log(thePost)
+    console.log(thePost)
 
   } catch (err) {
     console.log(err);
