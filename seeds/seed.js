@@ -1,3 +1,4 @@
+// Initialization of seeding functions
 const seedUser = require('./user');
 const seedPost = require('./post');
 const seedComments = require('./comment');

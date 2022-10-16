@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
+// Create comment based upon the comment form
 router.post('/', withAuth, async (req, res) => {
  
     try {

@@ -1,5 +1,4 @@
-
-
+// delete function
 async function deleteHandler(event) {
     event.preventDefault();
 

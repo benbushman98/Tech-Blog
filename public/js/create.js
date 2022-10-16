@@ -1,3 +1,4 @@
+// Show Post Creation
 function showPostCreation() {
   const createPost = document.querySelector('#createPost');
   const postForm = document.querySelector('#postForm');
@@ -5,6 +6,7 @@ function showPostCreation() {
   createPost.classList.add('hide');
 };
 
+// Create Post Function
 async function newPost(event) {
   event.preventDefault();
 

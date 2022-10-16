@@ -1,3 +1,4 @@
+// Seeding comment Data for functionality purposes
 const { Comment } = require('../models');
 
 const comment = [

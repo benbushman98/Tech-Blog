@@ -1,3 +1,4 @@
+// Show comment Section
 function showCommentCreation() {
     const createComment = document.querySelector('#createComment');
     const commentForm = document.querySelector('#commentForm');
@@ -5,6 +6,7 @@ function showCommentCreation() {
     createComment.classList.add('hide');
   };
   
+  // New Comment function
   async function newComment(event) {
     event.preventDefault();
    

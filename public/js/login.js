@@ -1,3 +1,4 @@
+// login function
 const login = async (event) => {
   event.preventDefault();
 

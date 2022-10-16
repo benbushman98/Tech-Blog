@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 
 
+// Find all posts for homepage
 router.get('/', async (req, res) => {
   const postData = await Post.findAll({
     include: [{
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 
-
+// Login route for displaying login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('dashboard');
@@ -26,6 +27,7 @@ router.get('/login', (req, res) => {
   res.render('login', { layout: 'main2' })
 });
 
+// signup route for displaying signup page
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('dashboard');
@@ -35,7 +37,7 @@ router.get('/signup', (req, res) => {
 });
 
 
-// TA -- Taylor Hakes helped with this route.
+// TA -- Taylor Hakes helped with this route. Find one post for post page
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findOne(

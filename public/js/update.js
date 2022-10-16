@@ -1,15 +1,16 @@
+// Show Modal
 function updatePostCreation() {
     const modal = document.querySelector('.modalBtn');
     modal.classList.remove('hide');
 };
-
+// Hide Modal Function
 function hideModal() {
     const modal = document.querySelector('.modalBtn');
     modal.classList.add('hide');
     document.location.replace('/dashboard');
 
 }
-
+//  Function for updating post
 async function updatePost(event) {
     event.preventDefault();
 

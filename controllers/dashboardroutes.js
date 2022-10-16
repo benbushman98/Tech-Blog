@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../models');
 const withAuth = require('../utils/auth');
 
-
+// Displaying posts related to specific user
 router.get('/', withAuth, async (req, res) => {
     try{
       const postData = await Post.findAll({

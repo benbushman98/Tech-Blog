@@ -1,9 +1,11 @@
+{{!-- User Dashboard page --}}
 <div class="container">
     <section class="mb-5">
         <div class="card-header bg-dark h2 text-white">Your Posts</div>
 
         <div>
             <ul class="p-1">
+                {{!-- Loop over posts --}}
                 {{#if posts.length}}
                 {{#each posts as |post|}}
                 <div class="border border-4 m-1">
@@ -12,7 +14,6 @@
                             <p>{{format_date date_created}}: {{title}} || Post {{id}}</p>
                         </div>
                         </a>
-                        <!-- Button trigger modal -->
                         <button class="d-inline ml-auto m-1 ms-auto" data-id="{{id}}"><a class="a"
                                 href="/post/{{id}}">View
                                 Post</a></button>
@@ -60,7 +61,7 @@
             <div class="modal-content">
                 <div class="modal-header fw-bolder">Update Your Post</div>
                 <p class="mx-3 fw-bold">Post Number:</p>
-                    <input class="modal-body px-3 mx-3" type="text" id="PostID" name="postId">
+                <input class="modal-body px-3 mx-3" type="text" id="PostID" name="postId">
                 <p class="m-3 fw-bold">Title:</p>
                 <input class="modal-body px-3 mx-3" type="text" id="updateTitle" name="updateTitle">
                 <p class="m-3 fw-bold">Content:</p>
@@ -75,6 +76,7 @@
     </div>
 </div>
 
+{{!-- Scripts --}}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

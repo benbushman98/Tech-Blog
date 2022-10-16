@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-
+// Create Post based upon psot fomr
 router.post('/', withAuth, async (req, res) => {
   try {
     const post = await Post.create({
@@ -16,6 +16,8 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// Update form with modal from dashboard page
 
 router.put('/', withAuth, async (req, res) => {
   try {
@@ -34,6 +36,7 @@ router.put('/', withAuth, async (req, res) => {
   }
 });
 
+// Delete form with button from dashboard page
 router.delete('/:id', withAuth, async (req, res) => { 
   try {
     const postData = await Post.destroy({ 
