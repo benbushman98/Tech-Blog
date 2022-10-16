@@ -5,7 +5,6 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    console.log("testing");
     const post = await Post.create({
       title: req.body.title,
       content: req.body.content,
@@ -15,6 +14,23 @@ router.post('/', withAuth, async (req, res) => {
     res.status(200).json(post);
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.put('/', withAuth, async (req, res) => {
+  try {
+    Post.update({
+      title: req.body.title,
+      content: req.body.content,
+    },
+    {
+      where: {
+        id: req.body.id,
+      }
+    })
+    res.status(400).json(err);
+  } catch (results) {
+    res.status(200).json(results);
   }
 });
 

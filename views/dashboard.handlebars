@@ -1,6 +1,7 @@
 <div class="container">
     <section class="mb-5">
         <div class="card-header bg-dark h2 text-white">Your Posts</div>
+
         <div>
             <ul class="p-1">
                 {{#if posts.length}}
@@ -8,13 +9,13 @@
                 <div class="border border-4 m-1">
                     <li class="d-flex">
                         <div class="p-2">
-                            <p>{{format_date date_created}}: "{{title}}"</p>
+                            <p>{{format_date date_created}}: {{title}} || Post {{id}}</p>
                         </div>
                         </a>
-                        <button class="d-inline ml-auto m-1 ms-auto" data-id="{{id}}"><a class="a" href="/post/{{id}}">Update
-                            Post</a></button>
-                        <button class="d-inline ml-auto m-1" data-id="{{id}}"><a class="a" href="/post/{{id}}">View
-                            Post</a></button>
+                        <!-- Button trigger modal -->
+                        <button class="d-inline ml-auto m-1 ms-auto" data-id="{{id}}"><a class="a"
+                                href="/post/{{id}}">View
+                                Post</a></button>
                         <button class="d-inline ml-auto m-1 deleteBtn" data-id="{{id}}">Delete</button>
                     </li>
                 </div>
@@ -46,7 +47,44 @@
 </div>
 <div class="text-center mt-3">
     <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">Post your Post</button>
+    <button class="d-inline ml-auto m-1 ms-auto updatePost" type="button" data-bs-target="#staticBackdrop"
+        data-bs-toggle="modal" data-id="{{id}}">Update
+        Post</button>
 </div>
+
+<!-- Modal -->
+<div class="modal-dialog modal-dialog-centered hide modalBtn">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header fw-bolder">Update Your Post</div>
+                <p class="mx-3 fw-bold">Post Number:</p>
+                    <input class="modal-body px-3 mx-3" type="text" id="PostID" name="postId">
+                <p class="m-3 fw-bold">Title:</p>
+                <input class="modal-body px-3 mx-3" type="text" id="updateTitle" name="updateTitle">
+                <p class="m-3 fw-bold">Content:</p>
+                <input class="modal-body px-3 mx-3" type="text" id="updateContent" name="updateContent">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="modalUpdate">Update your
+                        Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
 <script src="./js/create.js"></script>
 <script src="./js/delete.js"></script>
+<script src="./js/update.js"></script>
