@@ -47,10 +47,15 @@
     </section>
 </div>
 <div class="text-center mt-3">
+
+    {{#if posts.length}}
     <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">Post your Post</button>
     <button class="d-inline ml-auto m-1 ms-auto updatePost" type="button" data-bs-target="#staticBackdrop"
         data-bs-toggle="modal" data-id="{{id}}">Update
         Post</button>
+    {{else}}
+    <button type="button" class="mx-auto title" style="width: 200px;" id="createPost">Post your Post</button>
+    {{/if}}
 </div>
 
 <!-- Modal -->

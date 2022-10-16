@@ -19,8 +19,8 @@
         {{#if thePost.comments}}
         {{#each thePost.comments}}
         <div class="my-3">
-        <div class="fw-bold mx-3">{{format_date date_created}} || {{user.username}} said:</div>
-        <div class="d-flex mx-3">{{comment}}</div>
+            <div class="fw-bold mx-3">{{format_date date_created}} || {{user.username}} said:</div>
+            <div class="d-flex mx-3">{{comment}}</div>
         </div>
         {{/each}}
         {{else}}
@@ -34,20 +34,20 @@
 {{!-- View only if loogged in --}}
 {{#if loggedIn}}
 <div class="mx-5 px-5 hide" id="commentForm">
-<section class="card mb-5  m-3 h-25 d-inline-block w-100 border border-4" >
-    <div class="card-header bg-secondary text-white">Create New Comment</div>
-    <div class="card-body">
-        <form class="newCommentForm">
-            <div>
-                <input type="hidden" name="post_id" id="postIdValue" value="{{id}}">
-                <label class="form-label">Please Enter your Comment</label>
-                <input class="form-input w-100 mb-2" id="commentComment" type="text" name="post" />
-            </div>
+    <section class="card mb-5  m-3 h-25 d-inline-block w-100 border border-4">
+        <div class="card-header bg-secondary text-white">Create New Comment</div>
+        <div class="card-body">
+            <form class="newCommentForm">
+                <div>
+                    <input type="hidden" name="post_id" id="postIdValue" value="{{id}}">
+                    <label class="form-label">Please Enter your Comment</label>
+                    <input class="form-input w-100 mb-2" id="commentComment" type="text" name="post" />
+                </div>
 
-            <button type="submit" class="bg-secondary text-white" id="submitComment">Submit</button>
-        </form>
-    </div>
-</section>
+                <button type="submit" class="bg-secondary text-white" id="submitComment">Submit</button>
+            </form>
+        </div>
+    </section>
 </div>
 <div class="text-center mt-1">
     <button type="button" class="mx-auto title mb-5" style="width: 200px;" id="createComment">Post your Comment</button>
@@ -56,3 +56,5 @@
 {{else}}
 <p class="mx-auto title" style="width: 300px;">Please Login to Comment on Posts</p>
 {{/if}}
+
+<script src="../js/createComment.js"></script>
